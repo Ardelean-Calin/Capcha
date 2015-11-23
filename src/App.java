@@ -16,6 +16,8 @@ public class App extends JFrame implements KeyListener{
     CellGrid grid;
     Cell currentCell;
 
+    boolean done = false;
+
     public App(){
         super("Capcha");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -41,8 +43,12 @@ public class App extends JFrame implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
+        // Check if done
+        if(done)
+            return;
+
         currentCell = grid.getCurrentCell(currentRow, currentColumn);
-        if(currentCell.getState() == "cursor"){
+        if(currentCell.getState().equals("cursor")){
             currentCell.setState("completed");
         }
 
@@ -91,7 +97,7 @@ public class App extends JFrame implements KeyListener{
             df.setRoundingMode(RoundingMode.CEILING);
 
             JOptionPane.showMessageDialog(this, "Capcha entered correctly! It took you " + df.format(dt));
-            this.setEnabled(false); // disables the window.
+            done = true; // disables the window.
         }
 
         if(currentStep == 2){
