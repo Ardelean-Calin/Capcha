@@ -3,7 +3,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
-
 /**
  * Created by calin on 11/17/15.
  */
